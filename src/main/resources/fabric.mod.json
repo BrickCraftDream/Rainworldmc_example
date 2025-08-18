@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "rainworldmc_example",
+  "version": "${version}",
+  "name": "Rainworldmc_example",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/BrickCraftDream/Rainworldmc_example"
+  },
+  "license": "unlicense",
+  "icon": "assets/rainworldmc_example/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "net.brickcraftdream.rainworldmc_example.client.Rainworldmc_exampleClient"
+    ],
+    "main": [
+      "net.brickcraftdream.rainworldmc_example.Rainworldmc_example"
+    ]
+  },
+  "mixins": [
+    "rainworldmc_example.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

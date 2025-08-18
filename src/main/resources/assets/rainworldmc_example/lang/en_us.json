@@ -1,0 +1,10 @@
+{
+  "itemTooltip.rainworld.room_selector_item.first_line.use": "Use",
+  "itemTooltip.rainworld.room_selector_item.first_line.left_click": "Left click",
+  "itemTooltip.rainworld.room_selector_item.first_line.and": "and",
+  "itemTooltip.rainworld.room_selector_item.first_line.right_click": "Right click",
+  "itemTooltip.rainworld.room_selector_item.first_line.rest": "to select an area.",
+  "itemTooltip.rainworld.room_selector_item.second_line.press": "Then press",
+  "itemTooltip.rainworld.room_selector_item.second_line.ctrl": "Control",
+  "itemTooltip.rainworld.room_selector_item.second_line.confirm": "to confirm the selection."
+}
