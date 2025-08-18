@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -34,6 +35,8 @@ public class Rainworldmc_exampleClient implements ClientModInitializer {
     private static int maxTicksToIgnoreInputsAfterGuiExit = 6;
     public static int ticksSinceGuiExit = 0;
 
+    private Screen prevScreen = null;
+
 
     /**
      * Runs the mod initializer on the client environment.
@@ -59,10 +62,20 @@ public class Rainworldmc_exampleClient implements ClientModInitializer {
     public void tickHandler(MinecraftClient client) {
         if (client.world == null || client.player == null) return;
 
-        if (client.currentScreen != null) return;
+        Screen current = client.currentScreen;
+
+        // detect transition: screen just closed
+        if (prevScreen != null && current == null) {
+            ticksSinceGuiExit = 1; // start counting ignore ticks
+        }
+
+        prevScreen = current; // update tracker
+
+        if (current != null) return;
+
         if (ticksSinceGuiExit > 0) {
             ticksSinceGuiExit++;
-            if (ticksSinceGuiExit >= maxTicksToIgnoreInputsAfterGuiExit) {
+            if (ticksSinceGuiExit > maxTicksToIgnoreInputsAfterGuiExit) {
                 ticksSinceGuiExit = 0;
             }
             return;
