@@ -33,21 +33,21 @@ public class RoomSelectorItem extends Item {
 
     @Override
     public void appendTooltip(@NotNull ItemStack stack, Item.@NotNull TooltipContext context, List<Text> tooltip, @NotNull TooltipType tooltipFlag) {
-        tooltip.add(Text.translatable("itemTooltip.rainworld.room_selector_item.first_line.use").formatted(Formatting.GOLD)
+        tooltip.add(Text.translatable("itemTooltip.rainworld.selector_tool.first_line.use").formatted(Formatting.GOLD)
                 .append(" ")
-                .append(Text.translatable("itemTooltip.rainworld.room_selector_item.first_line.left_click").formatted(Formatting.RED))
+                .append(Text.translatable("itemTooltip.rainworld.selector_tool.first_line.left_click").formatted(Formatting.RED))
                 .append(" ")
-                .append(Text.translatable("itemTooltip.rainworld.room_selector_item.first_line.and").formatted(Formatting.GOLD))
+                .append(Text.translatable("itemTooltip.rainworld.selector_tool.first_line.and").formatted(Formatting.GOLD))
                 .append(" ")
-                .append(Text.translatable("itemTooltip.rainworld.room_selector_item.first_line.right_click").formatted(Formatting.RED))
+                .append(Text.translatable("itemTooltip.rainworld.selector_tool.first_line.right_click").formatted(Formatting.RED))
                 .append(" ")
-                .append(Text.translatable("itemTooltip.rainworld.room_selector_item.first_line.rest").formatted(Formatting.GOLD))
+                .append(Text.translatable("itemTooltip.rainworld.selector_tool.first_line.rest").formatted(Formatting.GOLD))
         );
-        tooltip.add(Text.translatable("itemTooltip.rainworld.room_selector_item.second_line.press").formatted(Formatting.GOLD)
+        tooltip.add(Text.translatable("itemTooltip.rainworld.selector_tool.second_line.press").formatted(Formatting.GOLD)
                 .append(" ")
-                .append(Text.translatable("itemTooltip.rainworld.room_selector_item.second_line.ctrl").formatted(Formatting.RED))
+                .append(Text.translatable("itemTooltip.rainworld.selector_tool.second_line.ctrl").formatted(Formatting.RED))
                 .append(" ")
-                .append(Text.translatable("itemTooltip.rainworld.room_selector_item.second_line.confirm").formatted(Formatting.GOLD))
+                .append(Text.translatable("itemTooltip.rainworld.selector_tool.second_line.confirm").formatted(Formatting.GOLD))
         );
     }
 

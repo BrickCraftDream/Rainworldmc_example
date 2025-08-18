@@ -20,7 +20,7 @@ import java.util.UUID;
 
 public class Rainworldmc_example implements ModInitializer {
     public static final String MOD_ID = "rainworldmc_example";
-    public static final Item ROOM_SELECTOR_ITEM = new RoomSelectorItem(new Item.Settings());
+    public static final Item SELECTOR_TOOL = new RoomSelectorItem(new Item.Settings());
 
     /**
      * Runs the mod initializer.
@@ -35,9 +35,9 @@ public class Rainworldmc_example implements ModInitializer {
         ServerPlayNetworking.registerGlobalReceiver(RemoveBoxPayload.ID, (payload, context) -> context.server().execute(() -> syncRemoveBox(context.server(), payload.playerName())));
         ServerPlayNetworking.registerGlobalReceiver(SelectedLocationPayload.ID, (payload, context) -> context.server().execute(() -> syncSelectedLocations(context.server(), payload.firstPos(), payload.secondPos(), payload.playerName())));
 
-        Registry.register(Registries.ITEM, Identifier.of(MOD_ID, "room_selector_item"), ROOM_SELECTOR_ITEM);
+        Registry.register(Registries.ITEM, Identifier.of(MOD_ID, "selector_tool"), SELECTOR_TOOL);
 
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.OPERATOR).register(entries -> entries.add(ROOM_SELECTOR_ITEM));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.OPERATOR).register(entries -> entries.add(SELECTOR_TOOL));
     }
 
     public void syncSelectedLocations(MinecraftServer server, GlobalPos firstPos, GlobalPos secondPos, UUID playerUUID) {

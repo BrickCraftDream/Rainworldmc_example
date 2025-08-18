@@ -19,7 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import org.lwjgl.glfw.GLFW;
 
-import static net.brickcraftdream.rainworldmc_example.Rainworldmc_example.ROOM_SELECTOR_ITEM;
+import static net.brickcraftdream.rainworldmc_example.Rainworldmc_example.SELECTOR_TOOL;
 
 public class Rainworldmc_exampleClient implements ClientModInitializer {
     private static BlockPos firstCorner = null;
@@ -82,7 +82,7 @@ public class Rainworldmc_exampleClient implements ClientModInitializer {
         }
 
         ItemStack mainHandItem = client.player.getMainHandStack();
-        if (mainHandItem.getItem() != ROOM_SELECTOR_ITEM) {
+        if (mainHandItem.getItem() != SELECTOR_TOOL) {
             return;
         }
 
