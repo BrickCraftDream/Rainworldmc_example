@@ -16,8 +16,11 @@ import net.minecraft.text.Text;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.GlobalPos;
 import net.minecraft.util.math.Vec3d;
 import org.lwjgl.glfw.GLFW;
+
+import java.util.List;
 
 import static net.brickcraftdream.rainworldmc_example.Rainworldmc_example.SELECTOR_TOOL;
 
@@ -37,7 +40,6 @@ public class Rainworldmc_exampleClient implements ClientModInitializer {
 
     private Screen prevScreen = null;
 
-
     /**
      * Runs the mod initializer on the client environment.
      */
@@ -52,6 +54,19 @@ public class Rainworldmc_exampleClient implements ClientModInitializer {
 
 
         ClientTickEvents.END_CLIENT_TICK.register(this::tickHandler);
+    }
+
+    /**
+     * Sends all the first and second positions the player selected to the server. Call this when you want to trigger something in response to pressing for example a button in a GUI.
+     * Also resets the selections of the player, so that they can select a new area.
+     * In the biome mod, something like this is called when the player presses the Place Biome button in the GUI.
+     * @param client the Minecraft client instance
+     */
+    public void sendSelectedLocationsToServer(MinecraftClient client) {
+        if (firstCorner != null && secondCorner != null && client.player != null) {
+            ClientPlayNetworking.send(new NetworkManager.BoxPositionsPayload(List.copyOf(BoxRenderer.firstAndSecondLocations)));
+            resetSelections(client.player);
+        }
     }
 
     /**
@@ -156,6 +171,7 @@ public class Rainworldmc_exampleClient implements ClientModInitializer {
 
                 if (isSelectionConfirmed) {
                     doStuff();
+                    sendSelectedLocationsToServer(client);
                     return;
                 }
             }
